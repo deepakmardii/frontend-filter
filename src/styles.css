@@ -1,0 +1,25 @@
+/* Create a CSS file (e.g., CSVTable.css) in the same directory as your component. */
+/* CSVTable.css */
+
+/* Style the table */
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th,
+.dataTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Style the table header */
+.dataTable th {
+  background-color: #f2f2f2;
+}
+
+/* Style the table rows */
+.dataTable tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import DataTable from "react-data-table-component";
+import Papa from "papaparse";
 
-function App() {
+const CsvDataTable = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    Papa.parse("/data.csv", {
+      download: true,
+      header: true,
+      complete: (googleData) => {
+        setData(googleData.data);
+      },
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataTable
+      title="CSV Data"
+      data={data}
+      columns={
+        data[0]
+          ? Object.keys(data[0]).map((key) => ({ name: key, selector: key }))
+          : []
+      }
+      pagination
+    />
   );
-}
+};
 
-export default App;
+export default CsvDataTable;
