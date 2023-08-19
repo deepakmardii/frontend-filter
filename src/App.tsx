@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import Papa from "papaparse";
 
-const CsvDataTable = () => {
+const App = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const CsvDataTable = () => {
   );
 };
 
-export default CsvDataTable;
+export default App;
